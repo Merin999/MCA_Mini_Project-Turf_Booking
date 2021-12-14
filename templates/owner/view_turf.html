@@ -1,0 +1,65 @@
+{% extends 'owner/owner_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+ <div class="hero-section set-bg" style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="" >MY TURF</font></h1>
+    </div>
+
+
+
+
+   <section class="blog-section spad">
+
+        <div class="container-fluid">
+            <div class="row">
+{% for tr in p %}
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-blog-item blog-item">
+                        <div class="blog-img">
+                          <a href=""><img src="{{ tr.image1.url }}" alt="">
+
+                        </div>
+
+                        <div class="blog-text">
+                       <span class="blog-time">{{ tr.name }}</span>
+
+
+                         <h3>{{ tr.price }} &#8377 per/hr </h3>
+                       <p> Discription :- {{ tr.descri }}</p>
+                         <p>Location :- {{ tr.location }}</p>
+                         <p>
+                          <a href="ViewRate?id={{ tr.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">VIEW RATE</a>
+                             <br><br>
+                         <a href="UpdateTurf?id={{ tr.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">UPDATE</a>
+
+                         <br><br>
+                         <a href="ViewTurfFeedback?id={{ tr.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">FEEDBACK</a>
+                             <br><br>
+                         <a href="DeleteTurf?id={{ tr.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">DELETE</a>
+                         
+               
+
+                         <br>
+                         <br>
+
+                         
+
+                         </p>
+                        </div>
+                    </div>
+
+                </div>
+                 {% endfor %}
+
+
+                </div>
+            </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+     <div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+        <br>
+             <br>
+     <h1 align="center" style="color:#82D026;"><font color="" >TURF LIST</font></h1>
+     </div>
+
+     <div class="col-lg-4 mx-auto order-lg-2 align-self-center">
+
+                    <form action="" method="POST"  enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                            
+                            <label for="category" class="text-black">Location<span class="text-danger">*</span></label>
+                                <input type="text" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;"
+ name="loc" placeholder="" required=""><br>
+                            
+                                <label for="category" class="text-black">Turf Game <span class="text-danger">*</span></label>
+                                <select style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;"
+name="type" required="">
+                                    <option value="">--Select--</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Tennise">Tennise</option>
+                                </select>
+                               
+                             
+                           
+
+
+
+
+                            <div class="col-lg-12">
+                                <div align="center">
+                                    <br>
+                            <button type="submit" name="add" style="height:40px;width:100px" class="submit-btn contact-btn" value="Search">Search</button>
+                        
+                </div>
+
+                        {% comment %} </div>
+                    </div>
+                    </div> {% endcomment %}
+                </div>
+            </form>
+
+
+                </div>
+
+
+  <section class="blog-section spad">
+        <div class="container-fluid">
+            <div class="row">
+                {% for st in s %}
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="single-blog-item blog-item">
+
+                        <div class="blog-img">
+                            <img src="{{ st.image1.url }}" alt="">
+                        </div>
+                        <div class="blog-text">
+
+                            <a href="TurfDetails?id={{ st.id }}"> <h3>{{ st.name }}</h3></a>
+                            <p>
+                                Type: {{ st.game }}<br>
+                                Size: {{ st.size }}'s<br>
+                                Location: {{ st.location }}<br>
+                                Price/Hour: {{ st.price }}<br>
+                                Other Facility: {{ st.facility }}<br>
+
+                                
+
+                            </p>
+{#                            <div class="blog-widget">#}
+{#                                <ul>#}
+{#                                    <li><img src="img/like.png" alt=""> <span>15 Likes</span></li>#}
+{#                                    <li><img src="img/chat.png" alt=""> <span>3 Comments</span></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+                        </div>
+
+                    </div>
+
+                </div>
+
+    {% endfor %}
+
+            </div>
+
+        </div>
+  </section>
+
+
+{% endblock %}

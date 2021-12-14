@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+     <style type="text/css">
+        li a:hover {
+color: #f9d700;
+background-color:#82D026;;
+}
+    </style>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <div color="red">
+                            <a href="/" class="js-logo-clone" ><h3><b><font color="#82D026">PLAY SPOTS</font></b></h3></a>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-10 col-md-10">
+                        <nav class="main-menu">
+                            <ul><br>
+                                <li><a href="CategoryView">Register</a></li>
+                                <li><a href="AboutView">About</a></li>
+                                <li><a href="LoginView">Login</a></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li ></li>
+                                <li ></li>
+                            </ul>
+                        </nav>
+                        <div id="mobile-menu-wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header End -->
+    <!-- Hero Section Begin -->
+    <div class="hero-slider">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-item set-bg"  style="height:860px;" data-setbg="{% static 'home/img.png' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="hero-text">
+                                <h1>Welcome</h1>
+                                <p><h2><font color="white">Winners never quit and quitters never win.</font></h2></p>
+                                <a href="CategoryView" class="primary-btn">JOIN NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    
+    <!-- Hero Section End -->
+    <!-- Class Booking Section Begin -->
+    
+
+
+
+{% endblock %}

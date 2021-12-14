@@ -1,0 +1,68 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+<div style="background-color: gray;"  >
+
+    <section class="services-section spad" style="height:800px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 m-auto text-center">
+                    <div class="section-title">
+                        <h2>WELCOME</h2>
+                        <h3>ADMIN</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-services">
+                        <a href="ManageOwner">
+                        <h4>MANAGE OWNER&nbsp;
+                            {% if o == 0%}
+                            {% else %}
+                            <div style="width:25px;height:25px;background-color:red;color:white;border-radius: 10px 10px 10px 10px;display: inline;">
+                            {{ o }}
+                        </div>
+                    {% endif %}</h4>
+                        </a>
+                    </div>
+                </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="single-services">
+                       <a href="ViewUser">
+                        <h4>VIEW USER</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-services">
+                       <a href="ManageTurf">
+                        <h4>
+                            MANAGE SPOTS&nbsp;{% if p == 0%}
+                            {% else %}
+                            <div style="width:25px;height:25px;background-color:red;color:white;border-radius: 10px 10px 10px 10px;display: inline;">
+                            {{ p }}
+                        </div>
+                    {% endif %}</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-services">
+                       <a href="ViewFeedback">
+                        <h4>FEEDBACK</h4>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    </div>
+{% endblock %}

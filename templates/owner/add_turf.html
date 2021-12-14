@@ -1,0 +1,100 @@
+{% extends 'owner/owner_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="" >ADD TURF</font></h1>
+    </div>
+   <div class="col-lg-4 mx-auto order-lg-2 align-self-center"  style="border-radius: 10px;border: solid;">
+
+                    <form action="" method="POST" class="contact-form"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                        <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Turf Name<span class="text-danger">*</span></label>
+                                <input type="text" name="name" placeholder="" style="background-color:#e5e0e0" required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Turf Game <span class="text-danger">*</span></label>
+                                <select style="background-color:#e5e0e0;height:50px;width:100%" name="type" required="">
+                                    <option value="">--Select--</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Tennise">Tennise</option>
+                                </select>
+                               
+                                </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Number of people allowed<span class="text-danger">*</span></label>
+                                <input type="number" name="size" placeholder="eg.7's 5's" style="background-color:#e5e0e0" required="">
+                            </div>
+                            
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Description <span class="text-danger">*</span></label>
+                                <textarea placeholder="" required="" style="background-color:#e5e0e0" name="description"></textarea>
+                            </div>
+
+
+
+
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Location <span class="text-danger">*</span></label>
+                                <input type="text" name="location" style="background-color:#e5e0e0" placeholder="" required="">
+                            </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Price/Hours<span class="text-danger">*</span></label>
+                                <input type="Number" name="price" style="background-color:#e5e0e0" placeholder="" required="">
+                            </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Upload Turf Image..<span class="text-danger">*</span></label>
+                                <input type="file" name="image1" style="background-color:#e5e0e0"accept="Image/*"  placeholder="image" title="Upload Turf Image.." required="">
+                            </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Upload More Image.. <span class="text-danger">*</span></label>
+                                <input type="file" name="image2" style="background-color:#e5e0e0" accept="Image/*" placeholder="image" title="Upload More Image.."  required="">
+                            </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Upload More Image..<span class="text-danger">*</span></label>
+                                <input type="file" name="image3" style="background-color:#e5e0e0" accept="Image/*" placeholder="image" title="Upload More Image.."  required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Upload Video..<span class="text-danger">*</span></label>
+                                    <input type="file" name="image4" style="background-color:#e5e0e0" placeholder="image" accept="Video/*"  required="">
+                                </div>
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Other Facilities.<span class="text-danger">*</span></label>
+                                <textarea placeholder="." required="" style="background-color:#e5e0e0" name="fec"></textarea>
+                            </div>
+
+                            <div class="col-lg-12">
+                            <label for="category" class="text-black">Upload Turf Licence<span class="text-danger">*</span></label>
+                                <input type="file" name="licence" style="background-color:#e5e0e0" accept=".pdf" title="Upload Turf Licence"  required="">
+                            </div>
+
+
+                            <div class="col-lg-12">
+                                <div align="center">
+                            <input type="submit" name="add" class="submit-btn contact-btn" value="ADD TURF">
+                            
+                          
+                </div>
+                {% comment %} <p class="contact-btn" style="width:150px;background-color:#82D026;margin-left:240px;">
+                    <a href="/owner"  style="text-decoration: none;padding-top:100px;"><font color="white" style="">Cancel</font></a>
+                    </p> {% endcomment %}
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+
+
+                </div><br><br>
+
+{% endblock %}

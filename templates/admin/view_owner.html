@@ -1,0 +1,76 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url(&quot;{% static 'img/img2.jpg' %}&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;">VIEW OWNER</h1>
+    </div>
+    <br>
+    <br>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-18" method="post" >
+            <div class="site-blocks-table">
+              <table class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-name">Company Name</th>
+                     <th class="product-phone">Address</th>
+                     <th class="product-phone">Phone number</th>
+                      <th class="product-email">Email</th>
+                     <th class="product-dis">Owner Address</th>
+                     <th class="product-dis">Licence</th>
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ps in p %}
+                  <tr>
+
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{ ps.user.first_name }}</h2>
+                    </td>
+                      <td class="product-phone">
+                      <h2 class="h5 text-black">{{ ps.address }}</h2>
+                    </td>
+                     <td class="product-phone">
+                      <h2 class="h5 text-black">{{ ps.contact }}</h2>
+                    </td>
+                     <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.user.email }}</h2>
+                    </td>
+                    <td class="product-dis">
+                      <h2 class="h5 text-black">{{ ps.owner_addr }}</h2>
+                    </td>
+
+                    <td class="product-dis">
+                      <h2 class="h5 text-black"><a style="color:#82D026;" href="{{ ps.owner_licence.url }}">Licence</a></h2>
+                    </td>
+
+
+
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        </div>
+
+      </div>
+
+{% endblock %}

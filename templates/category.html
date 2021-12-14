@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+     <script xmlns="http://www.w3.org/1999/html"> alert("{{ message }}")</script>
+     {% endif %}
+     <style type="text/css">
+        li a:hover {
+color: #f9d700;
+background-color:#82D026;;
+}
+
+
+
+    </style>
+<header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="/" class="js-logo-clone" ><h3><b><font color="#82D026">HOME</font></b></h3></font></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        <nav class="main-menu">
+
+
+
+
+                            <ul><br>
+                                <li><a href="CategoryView">Register</a></li>
+                                <li><a href="AboutView">About</a></li>
+                                <li><a href="LoginView">Login</a></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li ></li>
+                                <li ></li>
+                            </ul>
+                        </nav>
+                        <div id="mobile-menu-wrap"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <br>
+    <!-- Header End -->
+    <!-- Hero Section Begin -->
+    
+
+    <section class="services-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 m-auto text-center">
+                    <div >
+                      <h2 style="font-size:40px;color:#82D026;"><b>REGISTER AS A.... ?!</b></h2>
+                        <br>
+
+                        <!--<section class="contact-section spad">-->
+        <div class="container">
+
+
+                <div class="col-lg-4 mx-auto order-lg-2 align-self-center" style="border-radius: 10px;border: solid;height:300px">
+                  <form class="form-group" method="post" action="">
+                      {% csrf_token %}
+                  <div class="form-group row">
+                 <div class="col-md-12" style="margin-top:30px;width:700px;">
+                    <label for="category" class="text-black">Category <span class="text-danger">*</span></label>
+                    <div class="form-group row" style="padding=30px">
+
+                    <select class="form-control" required="" name="category" style="background-color:#e5e0e0" class="form-control">
+                      <option value="">Select category</option>
+                      <option value="1">User</option>
+                      <option value="2">Turf Owner</option>
+
+
+
+                    </select>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-12" >
+                    <input type="submit"  class="btn primary-btn btn-lg btn-block" name="submit">
+
+                </div>
+                <br>
+
+                  </form>
+              </div>
+
+            </div>
+   <!-- </section>-->
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    </div>
+    
+
+
+{% endblock %}

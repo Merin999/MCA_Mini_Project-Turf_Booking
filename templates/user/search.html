@@ -1,0 +1,73 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+     <div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+        <br>
+             <br>
+     <h1 align="center" style="color:#82D026;"><font color="" >TURF SEARCH LIST</font></h1>
+     </div>
+     <br>
+     <br>
+
+     <div class="col-lg-4 mx-auto order-lg-2 align-self-center">
+
+                    
+
+
+                </div>
+
+
+  <section class="blog-section spad">
+        <div class="container-fluid">
+            <div class="row">
+            {% if s %}
+
+                {% for st in s %}
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="single-blog-item blog-item">
+
+                        <div class="blog-img">
+                            <img src="{{ st.image1.url }}" alt="">
+                        </div>
+                        <div class="blog-text">
+
+                            <a href="TurfDetails?id={{ st.id }}"> <h3>{{ st.name }}</h3></a>
+                            <p>
+                                Type: {{ st.game }}<br>
+                                Size: {{ st.size }}'s<br>
+                                Location: {{ st.location }}<br>
+                                Price/Hour: {{ st.price }}<br>
+                                Other Facility: {{ st.facility }}<br>
+
+                                
+
+                            </p>
+{#                            <div class="blog-widget">#}
+{#                                <ul>#}
+{#                                    <li><img src="img/like.png" alt=""> <span>15 Likes</span></li>#}
+{#                                    <li><img src="img/chat.png" alt=""> <span>3 Comments</span></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+                        </div>
+
+                    </div>
+
+                </div>
+
+    {% endfor %}
+                {% else %}
+                <h2 style="margin-left: 200px">Result is not found</h2>
+            {% endif %}
+
+            </div>
+
+        </div>
+  </section>
+
+
+{% endblock %}

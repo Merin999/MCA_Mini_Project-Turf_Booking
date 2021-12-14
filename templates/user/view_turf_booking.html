@@ -1,0 +1,176 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg" style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center"  style="color:#82D026;"><font color="" >VIEW YOUR BOOKINGS</font></h1>
+    </div>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-18" method="post" >
+            <div class="site-blocks-table">
+              <table class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-name">Turf Details</th>
+                    <th class="product-name">Booking Details</th>
+
+                      <th class="product-email">Owner Details</th>
+                      <th class="product-email">Rate Turf</th>
+                      <th class="product-email">Cancel Booking</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ps in b %}
+                  <tr>
+                    <td class="product-name">
+                      <img src="{{ ps.image1.url }}">
+                        <h2 class="h5 text-black">{{ ps.turf.name }}</h2><br>
+                        <h2 class="h5 text-black">{{ ps.turf.location }}</h2><br>
+                        <h2 class="h5 text-black">{{ ps.turf.price }}/hours</h2>
+                    </td>
+
+
+                  <td class="product-email">
+                      <h2 class="h5 text-black">Purpose :{{ ps.forwhat }}</h2><br>
+                      <h2 class="h5 text-black">Booking Date :{{ ps.b_date }}</h2><br>
+
+                      <h2 class="h5 text-black">Time :{{ ps.time }}</h2><br>
+                      <h2 class="h5 text-black">End Time :{{ ps.end_time }}</h2><br>
+                      {% if ps.status == 'Accepted' %}
+                      <h2 class="h5 text-black">Total Amount :{{ ps.total }}</h2><br>
+                              {% endif %}
+                      
+                      <h2 class="h5 text-black">Status :{{ ps.status }}</h2>
+
+
+
+                    </td>
+                  <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.turf.owner.user.first_name }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.turf.owner.user.email }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.turf.owner.contact }}</h2>
+                    </td>
+                    
+                    <td>
+                      {% if ps.status == 'Accepted' %}
+                      <a href="AddRate?id={{ ps.turf.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Rate Now</a><br><br>
+                      <a href="AddTurfFeedback?id={{ ps.turf.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Feedback</a>
+                      {% else %}
+                      <label>Rating is not availabe</label>
+                      {% endif %}
+                  </td>
+
+                  
+                      {% if ps.status == 'Accepted' or ps.status == 'Booked' %}
+                  <td>
+
+                      <p style="color: black">If you cancel booking then 70% of amount will be refunded.</p>
+                      <a onclick="al()" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Cancel Booking</a>
+                  </td>
+                           <script>
+    function al(){
+        {#const val = confirm('Are you sure want to cancel..!');#}
+        {##}
+        {#if (val) {#}
+
+            const url = 'CancelBooking';  // get the url of the `load_cities` view
+            const book_id = {{ ps.id }}  // get the selected country ID from the HTML input
+            {#console.log(book_id);#}
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                data: {
+                    'book_id': book_id       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    {#console.log(data)#}
+                    var dict = $.parseJSON(data);
+                    if(dict.name === 'false') {
+                     alert('Booking Cancel Not Available..');
+                    }
+                    else {
+                        const val = confirm('Are you sure want to cancel..!');
+
+                        if (val) {
+                                const url = 'CancelBooking';
+                                const book_id = {{ ps.id }}
+                                {#console.log(book_id);#}
+                                $.ajax({
+                                url: url,
+                                data: {
+                                    'book_id': book_id       // add the country id to the GET parameters
+                                },
+                                success: function (data) {   // `data` is the return of the `load_cities` view function
+                                    {#console.log(data)#}
+                                    alert('Booking Canceled..');
+                                }
+                                })
+                        }
+
+
+
+
+                    }
+
+
+                                  // replace the contents of the city input with the data that came from the server
+
+            /*
+                                let html_data = '<option value="">---------</option>';
+                                data.forEach(function (city) {
+                                    html_data += `<option value="${city.id}">${city.name}</option>`
+                                });
+                                console.log(html_data);
+                                $("#id_city").html(html_data);
+
+                                */
+                            }
+            });
+        }
+       {% comment %} else {
+            console.log('Not');
+        }
+
+    }{% endcomment %}
+
+</script>
+{% endif %}
+                        {% if ps.status == 'Reject' %}
+                          <td>Booking Rejected<br>
+
+                          </td>
+
+                  {% endif %}
+                  {% if ps.status == 'Cancel' %}
+                  <td>Booking Canceled<br>
+                  Refund Amount is : {{ ps.total }}
+                  </td>
+{% endif %}
+
+
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        </div>
+
+      </div>
+
+
+{% endblock %}

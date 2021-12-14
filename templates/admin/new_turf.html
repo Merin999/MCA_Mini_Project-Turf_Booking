@@ -1,0 +1,92 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url({% static 'img/img2.jpg' %});">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;">NEW TURF</h1>
+    </div>
+    <br>
+    <br>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-18" method="post" >
+            <div class="site-blocks-table">
+              <table class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-name">Name</th>
+                    <th class="product-phone">Licence</th>
+                     <th class="product-phone">Description</th>
+                     <th class="product-phone">Location</th>
+                      <th class="product-email">Price/Hours</th>
+                      <th class="product-email">Other Facility</th>
+                      <th class="product-email">Owner Details</th>
+                      <th class="product-email">Approve</th>
+                      <th class="product-email">Reject</th>
+
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ps in p %}
+                  <tr>
+
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{ ps.name }}</h2>
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black"><a style="color:#82D026;" href="{{ ps.licence.url }}">Licence</a></h2>
+                    </td>
+                      <td class="product-phone">
+                      <h2 class="h5 text-black">{{ ps.descri }}</h2>
+                    </td>
+                     <td class="product-phone">
+                      <h2 class="h5 text-black">{{ ps.location }}</h2>
+                    </td>
+                     <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.price }}</h2>
+                    </td>
+                  <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.facility }}</h2>
+                    </td>
+                   <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.owner.user.first_name }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.owner.user.email }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.owner.contact }}</h2>
+                    </td>
+                  <td class="product-email">
+                      <a href="ApproveTurf?id={{ ps.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Approve</a>
+                    </td>
+                  <td class="product-email">
+                      <a href="DisApproveTurf?id={{ ps.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Reject</a>
+                    </td>
+
+
+
+
+
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        </div>
+
+      </div>
+
+{% endblock %}

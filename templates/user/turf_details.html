@@ -1,0 +1,108 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+<section class="lifestyle-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="lifestyle-text">
+                        <div class="section-title">
+                            <h2>{{ s.name }}</h2>
+                            <p>
+                                {{ s.descri }}
+                            </p>
+                            
+                            {% for i in avg %}
+                            <img src="{% static 'img/star.jpg' %}" width="25px">
+                            {% endfor %}
+                        
+                            <p>
+                                Size: {{ s.size }}'s<br>
+                                Location: {{ s.location }}<br>
+                                Price/Hours: {{ s.price }}<br>
+
+                                Other Details: {{ s.facility }}<br>
+                                Contact Details: {{ s.owner.contact }}<br>
+                                Address Details: {{ s.owner.address }}<br>
+                                Owner Details: {{ s.owner.owner_addr }}<br>
+                            </p>
+                            <a href="ViewTurfFeedback?id={{ s.id }}" class="primary-btn">View feedback</a><br><br>
+                            
+                    <form method="get" action="BookTurf">
+                            
+                 <input type="hidden" value="{{ p.id }}" name="pid" readonly>
+                 <input type="hidden" value="{{ s.id }}" name="tid" readonly>
+                 <input type="hidden" value="{{ s.price }}" name="tprice" readonly>
+                 <input type="hidden" value="{{ s.size }}" name="size" readonly>
+                 <div class="" style="width:500px">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
+                        class="listing-google-map" allowfullscreen></iframe>
+                </div>
+                            <button type="submit" class="primary-btn">Book Now</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+{#                {% for p in p %}#}
+
+
+{#                {% endfor %}#}
+                <div class="col-lg-6">
+                    <div class="lifestyle-img">
+                        <video loop muted autoplay  width="800px"><source src="{{ s.video.url }}" type=""></video>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Lifestyles Section End -->
+    <!-- Boxes Section Begin -->
+    <div class="boxes-section">
+        <div class="container-fluid">
+            <div class="boxes-img">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="boxes-item">
+                            <div class="boxes-pic">
+                                <img src="{{ s.image1.url }}" alt="">
+                                <div class="boxes-text">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="boxes-item">
+                            <div class="boxes-pic">
+                                <img src="{{ s.image2.url }}" alt="">
+                                <div class="boxes-text">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="boxes-item">
+                            <div class="boxes-pic">
+                                <img src="{{ s.image3.url }}" alt="">
+                                <div class="boxes-text">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+{% endblock %}

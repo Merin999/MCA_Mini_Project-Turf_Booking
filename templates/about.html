@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+     <style type="text/css">
+        li a:hover {
+color: #f9d700;
+background-color:#82D026;;
+}
+    </style>
+<header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="/" class="js-logo-clone" ><h3><b><font color="#82D026">HOME</font></b></h3></font></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        <nav class="main-menu mobile-menu">
+                            <ul><br>
+                                <li><a href="CategoryView">Register</a></li>
+                                <li><a href="AboutView">About</a></li>
+                                <li><a href="LoginView">Login</a></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li ></li>
+                                <li ></li>
+                            </ul>
+                        </nav>
+                        <div id="mobile-menu-wrap"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- Header End -->
+    <!-- Hero Section Begin -->
+
+    <section class="services-section spad">
+        <!--<div class="container">-->
+           <!-- <div class="row">-->
+                <div class="col-lg-9 m-auto text-center">
+                    <div style="font-size:100px">
+                      <h2 style="font-size:70px;color:#82D026;">ABOUT US</h2>
+
+
+
+    
+
+    <section class="contact-section spad">
+        <div class="container">
+
+
+                <div class=" mx-auto order-lg-2 align-self-center">
+                  <h2 style="color:black;"><b>PLAYSPOTS HAS USERS
+IN 60+ CITIES ACROSS KERALA
+JOIN WITH THE LARGEST SPORTS GROUND MANAGEMENT SOLUTION</b></h2>
+
+                  <p style="color:black;">Playspots is India’s leading Sports recreational platform for Venues, academies and Individuals. <br><br>
+
+We couldn’t believe there was no one-stop shop for sports players looking to find, contact and book local sports turfs. we set about researching, getting support for and then building a platform that showed all sports venues anywhere in south India, and that was free and easy for anyone to use.We know the urban work-life balance isn’t always easy to juggle and our services takes the hassle away from finding places and co- players<br><br>
+
+Our mission is making it easier for everyone to play sports and increasing the utilisation of facilities as a result.<br><br>
+
+Sports play a pivotal role in bringing people together, sharing moments and enhancing the well-being are reasons that form the  essence of PlaySpots.<br><br>
+
+Our Goal is making the sports simple #LetTheWorldPlay</p>
+              <!--</div>-->
+            <!--</div>-->
+    </section>
+
+                        </div>
+                </div>
+            </div>
+
+        <!--</div>-->
+    </section>
+
+    </div>
+
+{% endblock %}

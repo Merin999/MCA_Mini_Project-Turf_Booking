@@ -1,0 +1,103 @@
+{% extends 'owner/owner_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg" style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="" >VIEW TURF BOOKING</font></h1>
+    </div>
+    <br>
+    <br>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-18" method="post" >
+            <div class="site-blocks-table">
+              <table class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-name">Turf Details</th>
+                    <th class="product-name">Booking Details</th>
+
+                      <th class="product-email">User Details</th>
+                      <th class="product-email">Action</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ps in b %}
+                  <tr>
+                    <td class="product-name">
+                      <img src="{{ ps.turf.image1.url }}" width="200px">
+                        <h2 class="h5 text-black">{{ ps.turf.name }}</h2><br>
+                        <h2 class="h5 text-black">{{ ps.turf.location }}</h2><br>
+                        <h2 class="h5 text-black">{{ ps.turf.price }}/hours</h2>
+                    </td>
+
+
+                  <td class="product-email">
+                      <h2 class="h5 text-black">Purpose :{{ ps.forwhat }}</h2><br>
+                      <h2 class="h5 text-black">Person :{{ ps.no_per }}</h2><br>
+                      <h2 class="h5 text-black">Booking Date :{{ ps.b_date }}</h2><br>
+
+                      <h2 class="h5 text-black">Time :{{ ps.time }}</h2><br>
+                      <h2 class="h5 text-black">End Time :{{ ps.end_time }}</h2><br>
+                      <h2 class="h5 text-black">Total Amount :{{ ps.total }}</h2><br>
+                      
+                      <h2 class="h5 text-black">Status :{{ ps.status }}</h2>
+                    </td>
+                  <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.user.user.first_name }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.user.user.email }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.user.contact }}</h2>
+                    </td>
+                  {% if ps.status == 'Accepted' %}
+                  <td>
+                      Booking Accepted
+                    </td>
+{% endif %}
+                        {% if ps.status == 'Reject' %}
+                          <td>Booking Rejected<br>
+
+                          </td>
+
+                  {% endif %}
+                  {% if ps.status == 'Cancel' %}
+                  <td>Booking Canceled<br>
+                  Refund Amount is : {{ ps.total }}
+                  </td>
+{% endif %}
+                    {% if ps.status == 'Booked' %}
+                      <td class="product-email">
+                      <a href="AcceptTurf?id={{ ps.id }}" class="buy-now btn btn-sm height-auto px-12 py- primary-btn">Accept</a>
+                    <br>
+                    
+                    </td>
+
+
+                    {% endif %}
+
+
+
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        </div>
+
+      </div>
+
+{% endblock %}

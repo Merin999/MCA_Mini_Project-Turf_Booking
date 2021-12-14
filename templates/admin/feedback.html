@@ -1,0 +1,67 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="" >VIEW FEEDBACK</font></h1>
+    </div>
+    <br>
+    <br>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-18" method="post" >
+            <div class="site-blocks-table">
+              <table class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-name">Feedback</th>
+
+
+                      <th class="product-email">User Details</th>
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ps in p %}
+                  <tr>
+                    <td class="product-name">
+
+                        <h2 class="h5 text-black">{{ ps.feed }}</h2>
+                    </td>
+
+
+
+                  <td class="product-email">
+                      <h2 class="h5 text-black">{{ ps.user.user.first_name }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.user.user.email }}</h2><br>
+                      <h2 class="h5 text-black">{{ ps.user.contact }}</h2>
+                    </td>
+
+
+
+
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        </div>
+
+      </div>
+
+{% endblock %}

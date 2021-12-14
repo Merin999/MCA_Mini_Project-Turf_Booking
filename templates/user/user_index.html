@@ -1,0 +1,28 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+    <div class="hero-slider">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-item set-bg"  style="height:880px;" data-setbg="{% static 'home/img1.png' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="hero-text">
+                                <h1>Welcome {{ user.first_name }}</h1>
+                                <p><h2><font color="white">Winners never quit and quitters never win.</font></h2></p>
+                                <a href="ViewTurf" class="primary-btn">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

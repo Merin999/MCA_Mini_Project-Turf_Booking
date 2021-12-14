@@ -1,0 +1,47 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="" >ADD FEEDBACK</font></h1>
+    </div>
+   <div class="col-lg-4 mx-auto order-lg-2 align-self-center" style="border-radius: 10px;border: solid;">
+
+
+                    <form action="" method="POST" class="contact-form"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                        <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <input type="text" style="background-color:#e5e0e0"  placeholder="Feedback our site..." name="feed" required="">
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <div align="center">
+                                    <br><br>
+                            <input type="submit" name="add" class="submit-btn contact-btn" value="ADD FEEDBACK">
+                            
+                </div>
+                {% comment %} <p class="contact-btn" style="width:150px;background-color:#82D026;margin-left:240px;">
+                    <a href="/user"  style="text-decoration: none;padding-top:100px;"><font color="white" style="">Cancel</font></a>
+                    </p> {% endcomment %}
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+
+
+                </div>
+                <br>
+
+{% endblock %}

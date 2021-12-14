@@ -1,0 +1,129 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg"  style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+
+    <h1 align="center" style="color:#82D026;"><font color="" >BOOK NOW</font></h1>
+    </div>
+   <div class="col-lg-4 mx-auto order-lg-2 align-self-center" style="border-radius: 10px;border: solid;">
+
+   <script>
+       function CheckSize(){
+           var siz=document.getElementById("siz").value;
+           var nos=document.getElementById("nos").value;
+           var ze = 1;
+           if(nos==''){
+               return false;
+           }
+
+           if(nos>=ze && nos<=siz) {
+
+               
+
+           }
+           else {
+               alert("Maximum size is "+ siz)
+               document.getElementById("nos").value='';
+           }
+       }
+       function amount() {
+           var pr=document.getElementById("pr").value;
+           var no=document.getElementById("no").value;
+           t = pr*no;
+           s=parseFloat(t).toFixed(2);
+
+           document.getElementById("to").value=s;
+       }
+       function checkDate() {
+
+  var startDate = document.getElementById('mdate');
+  var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+
+ startDate.min = today;
+
+
+}
+
+   </script>
+
+                    <form action="" method="POST" class="contact-form"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                        <div class="col-md-12">
+                        <div class="row">
+                            <input type="hidden" id="pr" name="" value="{{ p }}" title=""  required="">
+                            <input type="hidden" id="siz" name="" value="{{ siz }}" title=""  required="">
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Purpose of booking<span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" placeholder="" oninput="checkDate();" style="background-color:#e5e0e0" name="forw" required="">
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Number of person <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="number" id="nos" name="nos" placeholder="" style="background-color:#e5e0e0"  max="{{ siz }}" min="1" required="">
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Booking Date<span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="date"  name="bodate" id="mdate" style="background-color:#e5e0e0" required="">
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Number Of Hours <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="number" placeholder="" id="no" style="background-color:#e5e0e0" max="12:00" oninput="amount()" name="no"  required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Time for play<span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="time"  name="ti"  style="background-color:#e5e0e0" required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Total amount <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" id="to"  name="to" style="background-color:#e5e0e0" placeholder="" readonly required="">
+                            </div>
+                            <div class="col-lg-12">
+                                {% if pack == "" %}
+                            <input type="hidden" id="pr" name="pck" value="" title=""  required="">
+                                {% else %}
+                                <input type="" id="pr" readonly name="pck" style="background-color:#e5e0e0" value="{{ pack }}" title=""  required="">
+                            {% endif %}
+                            </div>
+
+
+                            <div class="col-lg-12">
+                                <input type="hidden" name="tf" value="{{ id }}" title=""  required="">
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <div align="center">
+                            <input type="submit" name="add" class="submit-btn contact-btn" value="BOOK NOW">
+                            
+                </div>
+                {% comment %} <p class="contact-btn" style="width:150px;background-color:#82D026;margin-left:240px;">
+                    <a href="/user"  style="text-decoration: none;padding-top:100px;"><font color="white" style="">Cancel</font></a>
+                    </p> {% endcomment %}
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+
+
+                </div>
+                <br>
+                <br>
+
+{% endblock %}

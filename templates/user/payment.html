@@ -1,0 +1,86 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div class="hero-section set-bg" style="background-image: url(&quot;img/contact-bg.jpg&quot;);">
+       <br>
+            <br>
+    <h1 align="center" style="color:#82D026;"><font color="white" >PAY NOW</font></h1>
+    </div>
+   <div class="col-lg-4 mx-auto order-lg-2 align-self-center" style="border-radius: 10px;border: solid;">
+
+   <script>
+       function amount() {
+           var pr=document.getElementById("pr").value;
+           var no=document.getElementById("no").value;
+           t = pr*no;
+           document.getElementById("to").value=t;
+       }
+       function checkDate() {
+
+  var startDate = document.getElementById('mdate');
+  var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+
+ startDate.min = today;
+
+
+}
+
+   </script>
+
+                    <form action="PaymentView" method="GET" class="contact-form"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                        <div class="col-md-12">
+                        <div class="row">
+                            <input type="hidden" name="bid" value="{{ b_id }}" title=""  required="">
+
+
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Card Holder Name <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" name="na" style="background-color:#e5e0e0"  placeholder="" required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Card No. <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" name="card" style="background-color:#e5e0e0"  pattern="[0-9]{12}"  required="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">CVV <span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" name="cvv" style="background-color:#e5e0e0"  pattern="[0-9]{4}"   required="">
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label for="category" class="text-black">Total amount<span class="text-danger">*</span></label><span id='message'></span>
+                                <input type="text" value="{{ to }}" style="background-color:#e5e0e0"  readonly  required="">
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <div align="center">
+                            <input type="submit" name="add" class="submit-btn contact-btn" value="PAY NOW">
+                            <p>
+                    
+                    </p>
+                </div>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+
+
+                </div>
+
+{% endblock %}
